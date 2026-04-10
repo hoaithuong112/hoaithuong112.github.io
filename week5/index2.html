@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background: #008080; font: 12px "Tahoma"; }
+        .win { 
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 300px; background: #ced0cf; padding: 2px; display: none;
+            border: 2px solid; border-color: #eee #888 #888 #eee; 
+            box-shadow: 1px 1px 0 #000; z-index: 10;
+        }
+        .title { 
+            background: linear-gradient(90deg, #000080, #1084d0); color: white; 
+            padding: 3px 5px; font-weight: bold; display: flex; justify-content: space-between; 
+        }
+        .body { padding: 15px; }
+        input { border: 2px inset #eee; width: 100%; margin: 10px 0; outline: none; }
+        button { 
+            background: #ced0cf; border: 2px outset #eee; padding: 3px 15px; 
+            cursor: pointer; font-family: inherit;
+        }
+        button:active { border-style: inset; }
+        
+        #overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); display: none; }
+    </style>
+</head>
+<body>
+
+<div id="overlay"></div>
+
+<div id="pBox" class="win">
+    <div class="title">Explorer User Prompt <span onclick="closeD()" style="cursor:pointer">x</span></div>
+    <div class="body">
+        <div id="pMsg">Enter number A</div>
+        <input type="text" id="inp">
+        <div style="text-align:right"><button onclick="ok()">OK</button> <button onclick="closeD()">Cancel</button></div>
+    </div>
+</div>
+
+<div id="aBox" class="win">
+    <div class="title">Message from webpage</div>
+    <div class="body">
+        <p id="aMsg"></p>
+        <center><button onclick="closeD()">OK</button></center>
+    </div>
+</div>
+
+<script>
+      let step = 'A', valA;
+    const $ = id => document.getElementById(id);
+
+    function showP(m, s) { 
+        $('overlay').style.display = $('pBox').style.display = 'block'; 
+        $('pMsg').innerText = m; step = s; $('inp').value = ''; $('inp').focus();
+    }
+
+    function showA(m) { 
+        $('overlay').style.display = $('aBox').style.display = 'block'; 
+        $('aMsg').innerText = m; 
+    }
+
+    function closeD() { $('pBox').style.display = $('aBox').style.display = $('overlay').style.display = 'none'; }
+
+    function ok() {
+        let v = $('inp').value;
+        closeD();
+        if (v === "" || isNaN(v)) return showA(`Number ${step} is formatted incorrect`);
+        
+        if (step === 'A') { valA = v; showP("Enter number B", 'B'); } 
+        else showA(`Result:\n ${valA} + ${v} = ${parseFloat(valA) + parseFloat(v)}`);
+    }
+
+    window.onload = () => showP("Enter number A", 'A');
+</script>
+</body>
+</html>
