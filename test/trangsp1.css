@@ -386,19 +386,19 @@ header {
 
 
 .page-link.active {
-  background: #fbfafa;
-  color: #0c0c0c;
+  background:#0c0c0c;
+  color:  #fbfafa;
 }
 .page-link{
-    background: #080808;
-    color: #fffefe;
+    background: #fffefe;
+    color: #080808;
 }
  
 
 
 .page-next {
-  background: #000000;
-  color: #ffffff;
+  background:  #ffffff;
+  color: #080808 ;
 }
 
 
