@@ -1,0 +1,430 @@
+
+body {
+  font-family: 'Be Vietnam Pro','Poppins', 'Segoe UI', 'sans-serif';
+            background-color: #fef9f0;
+            color: #2c2418;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+}
+header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 250, 240, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo.brand .logo img {
+            transition: transform 0.3s;
+            max-height: 70px;
+            width: auto;
+        }
+        .logo.brand:hover img {
+            transform: scale(1.02);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-menu li a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #4a3424;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            position: relative;
+           
+        }
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #c28a4e;
+            transition: 0.3s;
+        }
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+        .nav-menu li a:hover {
+            color: #b46f30;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+        .nav-icons a {
+            color: #4a3424;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .nav-icons a:hover {
+            color: #c28a4e;
+            transform: translateY(-2px);
+        }
+        .cart-icon {
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #c28a4e;
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-weight: bold;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #b46f30;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: #fffaf3;
+            padding: 1rem 2rem;
+            gap: 0.8rem;
+            border-top: 1px solid #f0e2d2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #4a3424;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f5e9dd;
+        }
+
+.brand-story-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 50px 5%;
+    max-width: 1400px;
+    margin: 50px auto;
+    font-family: sans-serif;
+}
+
+/* Cột 1: Tiêu đề & Chi nhánh */
+.column-left {
+    flex: 0 0 18%; /* Cột trái hẹp */
+}
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; /* In nghiêng giống mẫu */
+    font-weight: 400;    /* Độ mảnh thanh lịch */
+    font-size: 35px;     /* Kích thước bạn có thể tùy chỉnh */
+    color: #333;
+    margin-bottom: 20px;
+}
+.column-center h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #555;         /* Màu xám nhẹ hơn tiêu đề chính */
+    margin-bottom: 25px;
+    letter-spacing: 0.5px; /* Khoảng cách chữ hơi thưa ra cho sang */
+}
+.sub-brand-title {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Đổi font khác */
+    font-style: italic;         /* In nghiêng cho điệu */
+    font-weight: 600;           /* Độ đậm vừa phải */
+    color: #5d4037;             /* Giữ màu nâu đặc trưng của Cocoon */
+    letter-spacing: 1px;        /* Khoảng cách các chữ thưa ra cho sang */
+    margin-top: 10px;
+}
+.branches-box h3 {
+    color: #b58e3e;
+    font-size: 18px;
+    border-bottom: 2px solid #b58e3e;
+    padding-bottom: 5px;
+}
+.branches-box ul {
+    list-style: none;
+    padding: 0;
+}
+.branches-box li {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555;
+}
+/* Áp dụng cho tất cả đoạn văn bản nội dung */
+.column-center p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;          /* Kích thước chữ nhỏ và tinh tế hơn */
+    line-height: 1.6;        /* Tạo khoảng cách dòng thoáng, dễ đọc */
+    color: #4a4a4a;          /* Màu xám đậm thay vì đen tuyền để dịu mắt */
+    margin-bottom: 15px;     /* Khoảng cách giữa các đoạn */
+    text-align: justify;     /* Căn đều hai bên nếu bạn muốn giống hệt mẫu */
+    font-weight: 400;        /* Độ dày bình thường */
+}
+/* Riêng phần tiêu đề nhỏ như "Ý nghĩa thương hiệu", "Triết lý" */
+.column-center h3 {
+    font-size: 16px;         /* Lớn hơn nội dung một chút */
+    font-weight: 600;        /* Đậm hơn để phân biệt */
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #333;
+}
+/* 1. Định dạng khung cột phải */
+.column-right {
+    flex: 0 0 28%;      /* Giữ độ rộng cột khoảng 28% */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;          /* TỰ ĐỘNG tạo khoảng cách giữa các video/ảnh */
+}
+/* 2. Định dạng khung chứa video/ảnh để nó luôn to hết cỡ */
+.video-container {
+    width: 100%;        /* Ép khung chứa rộng bằng 100% cột phải */
+    border-radius: 8px; /* Bo góc nhẹ cho sang */
+    overflow: hidden;   /* Cắt các phần thừa của video bị tràn khỏi góc bo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Thêm đổ bóng nhẹ cho nổi khối */
+}
+
+/* 3. Định dạng chính video bên trong */
+.video-container video,
+.column-right img {     /* Áp dụng cho cả thẻ video và thẻ img nếu có */
+    width: 100%;        /* Ép video/ảnh to ra lấp đầy khung */
+    height: auto;       /* Giữ đúng tỷ lệ, không bị méo hình */
+    display: block;     /* Loại bỏ khoảng hở thừa dưới chân phần tử */
+    object-fit: cover;  /* Đảm bảo nội dung lấp đầy không gian */
+}
+img {
+    max-width: 100%; /* Đảm bảo ảnh không vượt quá khung chứa */
+    height: auto;    /* Giữ đúng tỷ lệ ảnh, không bị méo */
+    display: block;  /* Loại bỏ khoảng trống thừa phía dưới */
+
+}
+.video-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+}
+.end-all {
+            background: #1e1915;
+            color: #e7dfd3;
+            margin-top: 3rem;
+        }
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .footer-three-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .col-contact {
+            flex: 1;
+        }
+        .footer-logo h1 {
+            color: #e0bc8c;
+            font-size: 1.8rem;
+        }
+        .company-name {
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .address-text {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+        .contact-line {
+            margin: 0.5rem 0;
+        }
+
+        .contact-line a {
+            color: #e0bc8c;
+            text-decoration: none;
+        }
+
+
+ .col-middle {
+            flex: 1;
+            text-align: center;
+        }
+
+        .circle-logo span img {
+            max-width: 100px;
+            border-radius: 50%;
+            background: #fef3e4;
+            padding: 8px;
+            height: 100.84px;
+            display: inline-flex;
+        }
+        .slogan-text p {
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        .social-row a {
+            color: #e7dfd3;
+            font-size: 1.3rem;
+            margin: 0 10px;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .social-row a:hover {
+            color: #e0bc8c;
+            transform: translateY(-3px);
+        }
+        .col-policy {
+            flex: 1;
+            text-align: right;
+        }
+
+        .policy-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .policy-list {
+            list-style: none;
+        }
+        .policy-list li {
+            margin-bottom: 0.5rem;
+        }
+        .policy-list a {
+            color: #cfc3b4;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .policy-list a:hover {
+            color: #e0bc8c;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #3b2e24;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Tablet & Mobile: Tự động xếp chồng lại nếu màn hình hẹp */
+@media (max-width: 1024px) {
+    .brand-story-wrapper {
+        flex-direction: column;
+    }
+    .column-left, .column-center, .column-right {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Container bên trái */
+.sidebar {
+    width: 250px; /* Độ rộng cột trái tùy chỉnh */
+    padding: 20px;
+    background-color: #fdfaf4; /* Màu nền kem giống ảnh */
+}
+
+
+.branch-list h3 {
+    color: #b08d4b; /* Màu vàng đồng của tiêu đề */
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: lowercase; /* Để chữ thường giống ảnh */
+}
+
+
+.branch-list ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+
+.branch-list li {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+
+/* Tùy chỉnh phần map */
+.branch-map {
+    width: 100%;
+    margin-top: 15px;
+    border: 1px solid #ddd; /* Tạo viền mỏng quanh map */
+    border-radius: 4px;
+    overflow: hidden; /* Bo góc cho bản đồ */
+}
+
+
+.branch-map iframe {
+    display: block; /* Loại bỏ khoảng trống dưới iframe */
+}
+
+
+.branch-map {
+    width: 100%;
+    height: 400px; /* Tăng chiều dài hiển thị của bản đồ lên (tùy bạn chỉnh số này) */
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+
+.branch-map iframe {
+    position: absolute;
+    /* Đẩy lên thêm để mất hẳn phần bóng mờ hoặc viền đen còn sót lại */
+    top: -70px;
+    left: 0;
+    width: 100%;
+    /* Chiều cao iframe phải lớn hơn chiều cao div cha + phần top đã đẩy lên */
+    height: 500px;
+}
+
