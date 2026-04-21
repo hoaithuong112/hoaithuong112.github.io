@@ -317,11 +317,10 @@
         /* ========== TRIẾT LÝ ========== */
         .main-container {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #fff8ef, #fef3e4);
             text-align: center;
             margin-top: 100px;
             margin-bottom: 100px;
-            background-image: url("https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/500226107_717893347264770_7283995624713467424_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeEqo8NZ-hmzV29iViRTBuObgjqpV-0m7-qCOqlX7Sbv6tFnmY5T031s3MUR2fHdjtcEVCEJpN-zAxVC2v2bhYa1&_nc_ohc=HG9sLkjrmxQQ7kNvwFqk52t&_nc_oc=AdoKZeSceQg1kXYkJYvX9hbRB49g4VwoirAXMngGkCuAdYqDv_NwJwkH7tpJ3oBVliU&_nc_zt=23&_nc_ht=scontent.fhan14-1.fna&_nc_gid=oTUq56UUchmkXnGFPuTs8Q&_nc_ss=7a3a8&oh=00_Af1mmWRpqmJqXuuC8LdFJV8HqTQ1wbbddfEYMMxevdZUGQ&oe=69E6C3D7") ;
+background-image: url(ảnh\ nền\ cocoon.jpg);
             background-repeat: no-repeat;
             background-size: cover;
         }
