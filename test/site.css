@@ -5,19 +5,14 @@
         }
 
         body {
-            font-family: 'Be Vietnam Pro','Poppins', 'Segoe UI', 'sans-serif';
+            font-family: 'Be Vietnam Pro','Segoe UI', 'sans-serif';
             background-color: #fef9f0;
             color: #2c2418;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .logo, .brand, .nav-menu a, .btn, .footer-logo h1, .policy-title {
-            font-family: inherit;
-    font-weight: 700;
-            
-        }
-
+        
         /* ========== HEADER & NAVIGATION ========== */
         header {
             position: fixed;
@@ -320,7 +315,7 @@
             text-align: center;
             margin-top: 100px;
             margin-bottom: 100px;
-background-image: url(ảnh\ nền\ cocoon.jpg);
+background-image: url(ảnh_nền_cocoon.jpg);
             background-repeat: no-repeat;
             background-size: cover;
         }
