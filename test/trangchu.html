@@ -23,13 +23,14 @@
             </ul>
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="#" class="cart-icon">
+                <a href="dangnhap.html"><i class="fas fa-user"></i></a>
+                <a href="giohangfull.html" class="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>
             </div>
-            <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').hidden ^= 1">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+           
         </nav>
         <div class="mobile-menu" id="mobileMenu" hidden>
             <a href="trangchu.html">TRANG CHỦ</a>
@@ -37,7 +38,7 @@
             <a href="trangchu.html">TIN TỨC</a>
             <a href="thuonghieu.html">THƯƠNG HIỆU</a>
             <a href="lienhe.html">LIÊN HỆ</a>
-            <a href="#">ĐĂNG NHẬP</a>
+            <a href="dangnhap.html">ĐĂNG NHẬP</a>
         </div>
     </header>
 
@@ -50,8 +51,8 @@
                         <h2>Hãng mỹ phẩm thuần chay</h2>
                         <p>Câu chuyện thương hiệu Việt: Gói “tinh hoa của đất” vào từng sản phẩm</p>
                         <div class="hero-buttons">
-                            <a href="#" class="btn btn-primary">Xem Sản Phẩm</a>
-                            <a href="#" class="btn btn-secondary">Liên Hệ</a>
+                            <a href="trangsp1.html" class="btn btn-primary">Xem Sản Phẩm</a>
+                            <a href="lienhe.html" class="btn btn-secondary">Liên Hệ</a>
                         </div>
                     </div>
                 </div>
@@ -60,8 +61,8 @@
                         <h2>Top các sản phẩm bán chạy</h2>
                         <p>Mỹ phẩm cũng giống như thực phẩm đều là những “món ăn bổ dưỡng” mang đến vẻ đẹp cho con người</p>
                         <div class="hero-buttons">
-                            <a href="#" class="btn btn-primary">Xem Sản Phẩm</a>
-                            <a href="#" class="btn btn-secondary">Liên Hệ</a>
+                            <a href="trangsp1.html" class="btn btn-primary">Xem Sản Phẩm</a>
+                            <a href="lienhe.html" class="btn btn-secondary">Liên Hệ</a>
                         </div>
                     </div>
                 </div>
@@ -70,8 +71,8 @@
                         <h2>COCOON đã có mặt tại Pháp</h2>
                         <p>Một cột mốc đáng nhớ trên hành trình mang vẻ đẹp Việt vươn ra thế giới</p>
                         <div class="hero-buttons">
-                            <a href="#" class="btn btn-primary">Xem Sản Phẩm</a>
-                            <a href="#" class="btn btn-secondary">Liên Hệ</a>
+                            <a href="trangsp1.html" class="btn btn-primary">Xem Sản Phẩm</a>
+                            <a href="lienhe.html" class="btn btn-secondary">Liên Hệ</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +93,7 @@
                 <div class="content-box" >
                     <h2 class="title">Triết Lý<br>Thương Hiệu</h2>
                     <p class="description">Là những người yêu thiên nhiên và đam mê khám phá các nguồn nguyên liệu đặc hữu của Việt Nam, chúng tôi luôn kiên định với những triết lý trên hành trình tìm vẻ đẹp thật sự của làn da.</p>
-                    <button class="timhieuthem"><a href="#">TÌM HIỂU THÊM <span class="arrow">&rarr;</span></a></button>
+                    <button class="timhieuthem"><a href="thuonghieu.html">TÌM HIỂU THÊM <span class="arrow">&rarr;</span></a></button>
                 </div>
             </div>
         </section>
@@ -171,7 +172,6 @@
             </div>
             <footer class="end2 see-more"><button class="see-more-btn">Xem tất cả sản phẩm</button></footer>
         </section>
-
         <section>
             <div class="all-img">
                 <div class="img-1">
@@ -187,7 +187,7 @@
                 <div class="img-2">
                     <a href="https://www.elle.vn/tin-lam-dep/cocoon-my-pham-thuan-chay-cho-net-dep-thuan-viet/" >
                            <img src="https://www.elle.vn/wp-content/uploads/2021/04/07/432697/cocoon-hinh-1.jpg" target="_blank" width="500" height="500">
-                        </a>
+                    </a>
                     <h2>Cocoon Vietnam-Từ mầm xanh làm đẹp đến giải thưởng danh giá tại ELLE Beauty Awards 2021</h2>
                     <button class="timhieuthem">
                         <a href="https://www.elle.vn/tin-lam-dep/cocoon-my-pham-thuan-chay-cho-net-dep-thuan-viet/" target="_blank">TÌM HIỂU THÊM 
@@ -246,57 +246,54 @@
     </footer>
 
     <script>
-        // Slider JavaScript
-        let slides = document.querySelectorAll('.slide');
-        let dots = document.querySelectorAll('.dot');
-        let currentIndex = 0;
-        let slideInterval;
+  
+  let slides = document.querySelectorAll('.slide');
+  let dots = document.querySelectorAll('.dot');
+  let currentIndex = 0;
+  let slideInterval;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            currentIndex = index;
-        }
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+  }
 
-        function nextSlide() {
-            let newIndex = (currentIndex + 1) % slides.length;
-            showSlide(newIndex);
-        }
+  function nextSlide() {
+    let newIndex = (currentIndex + 1) % slides.length;
+    showSlide(newIndex);
+  }
 
-        function prevSlide() {
-            let newIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(newIndex);
-        }
+  function prevSlide() {
+    let newIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(newIndex);
+  }
 
-        window.changeSlide = function(direction) {
-            if (direction === 1) nextSlide();
-            else prevSlide();
-            resetInterval();
-        };
+  document.querySelector('.prev')?.addEventListener('click', () => {
+    prevSlide();
+    resetInterval();
+  });
+  document.querySelector('.next')?.addEventListener('click', () => {
+    nextSlide();
+    resetInterval();
+  });
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showSlide(i);
+      resetInterval();
+    });
+  });
 
-        window.currentSlide = function(index) {
-            showSlide(index);
-            resetInterval();
-        };
+  function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 5000);
+  }
 
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
+  slideInterval = setInterval(nextSlide, 5000);
 
-        slideInterval = setInterval(nextSlide, 5000);
-
-        // Add to cart alert
-        document.querySelectorAll('.add-to-cart, .see-more-btn, .btn-primary, .btn-secondary').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                if(btn.classList.contains('add-to-cart')) alert('✅ Đã thêm sản phẩm vào giỏ hàng!');
-                else alert('📞 Cảm ơn bạn, chúng tôi sẽ liên hệ sớm!');
-            });
-        });
     </script>
 </body>
 </html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Cocoon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="giohang.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo brand">
+                <span class="logo"><img src="Cocoon_Vietnam_idnp5sh-lK_0.png" alt="Cocoon" title="thương hiệu" width="60" height="60"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="trangchu.html">TRANG CHỦ</a></li>
+                <li><a href="trangsp1.html">SẢN PHẨM</a></li>
+                <li><a href="trangchu.html">TIN TỨC</a></li>
+                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+                <li><a href="thuonghieu.html">THƯƠNG HIỆU</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="dangnhap.html"><i class="fas fa-user"></i></a>
+                <a href="giohangfull.html" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+           
+        </nav>
+        <div class="mobile-menu" id="mobileMenu" hidden>
+            <a href="trangchu.html">TRANG CHỦ</a>
+            <a href="trangsp1.html">SẢN PHẨM</a>
+            <a href="trangchu.html">TIN TỨC</a>
+            <a href="thuonghieu.html">THƯƠNG HIỆU</a>
+            <a href="lienhe.html">LIÊN HỆ</a>
+            <a href="dangnhap.html">ĐĂNG NHẬP</a>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="trangsp1.html">Trang chủ</a> / <span>Giỏ hàng</span>
+    </div>
+
+    <main class="cart-main">
+        <h1 class="cart-title">GIỎ HÀNG CỦA BẠN</h1>
+        <div class="cart-grid">
+            <div class="cart-items" id="cart-items-container">
+                <!-- Nội dung giỏ hàng sẽ hiển thị ở đây -->
+            </div>
+            <div class="cart-sidebar" id="cart-sidebar" style="display: none;">
+                <div class="order-note">
+                    <h4> Ghi chú đơn hàng</h4>
+                    <textarea id="order-note" rows="10" placeholder="Nhập ghi chú cho đơn hàng..."></textarea>
+                </div>
+                <div class="order-summary">
+                    <h4> Thông tin đơn hàng</h4>
+                    <div class="summary-row">
+                        <span>Tổng tiền:</span>
+                        <span id="total-amount" style="font-weight: 600; color: #b46f30;">0₫</span>
+                    </div>
+                    <div class="shipping-note">
+                        Phí vận chuyển sẽ được tính ở trang thanh toán.<br>
+                     Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.
+                    </div>
+                    <button id="checkout-btn" class="checkout-btn">THANH TOÁN NGAY</button>
+                    <a href="trangsp1.html" class="continue-link">← Tiếp tục mua hàng</a>
+                </div>
+            </div>
+        </div>
+    </main>
+ <footer class="end-all">
+        <div class="footer-container">
+            <div class="footer-three-columns">
+                <div class="col-contact">
+                    <div class="footer-logo"><h1>COCOON</h1></div>
+                    <div class="company-name"><strong>SẢN XUẤT VÀ CHỊU TRÁCH NHIỆM VỀ HÀNG HOÁ<br>CÔNG TY TNHH NATURE STORY</strong></div>
+                    <div class="address-text">PHÒNG ĐĂNG KÝ KINH DOANH - SỞ TÀI CHÍNH THÀNH PHỐ HỒ CHÍ MINH CẤP LẦN THỨ 2 NGÀY 25/09/2025.<br>14D1, KHU PHỐ 1A, ĐƯỜNG QUỐC LỘ 1A, PHƯỜNG TÂN THỚI HIỆP, TP. HỒ CHÍ MINH, VIỆT NAM</div>
+                    <div class="contact-line">Hotline: <a href="tel:+8419009300">(+84) 19009300</a></div>
+                    <div class="contact-line">Email: <a href="mailto:WE@COCOONVIETNAM.COM">WE@COCOONVIETNAM.COM</a></div>
+                </div>
+                <div class="col-middle">
+                    <div class="circle-logo"><span><img src="idFImIgUYr_logos.jpeg" alt="Thương hiệu cocoon"></span></div>
+                    <div class="slogan-text"><p>COCOON - Mỹ phẩm thuần chay - cho nét đẹp thuần Việt</p></div>
+                    <div class="social-row">
+                        <a href="https://www.facebook.com/CocoonVietnamOfficial" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cocoon.vietnam/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/results?search_query=cocoon" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-policy">
+                    <div class="policy-title">CHÍNH SÁCH</div>
+                    <ul class="policy-list">
+                        <li><a href="#">Tìm kiếm</a></li>
+                        <li><a href="lienhe.html">Liên hệ</a></li>
+                        <li><a href="trangchu.html">Giới thiệu</a></li>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
+                        <li><a href="#">Chính sách đối trả</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><div class="copyright">© 2026 Cocoon Vietnam. All rights reserved.</div></div>
+        </div>
+    </footer>
+
+    <script>
+        // Lấy giỏ hàng từ localStorage (dùng chung key với trang sản phẩm)
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cocoonCart')) || [];
+        }
+
+        // Lưu giỏ hàng vào localStorage
+        function saveCart(cart) {
+            localStorage.setItem('cocoonCart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // Cập nhật số lượng trên icon giỏ hàng
+        function updateCartCount() {
+            let cart = getCart();
+            let total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const countElements = document.querySelectorAll('#cart-count');
+            countElements.forEach(el => el.innerText = total);
+        }
+
+        // Xóa sản phẩm khỏi giỏ
+        function removeFromCart(id) {
+            let cart = getCart();
+            cart = cart.filter(item => item.id != id);
+            saveCart(cart);
+            renderCart();
+        }
+
+        // Cập nhật số lượng sản phẩm
+        function updateQuantity(id, delta) {
+            let cart = getCart();
+            let item = cart.find(item => item.id == id);
+            if (item) {
+                item.quantity = (item.quantity || 1) + delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id != id);
+                }
+                saveCart(cart);
+                renderCart();
+            }
+        }
+
+        // Lưu ghi chú đơn hàng
+        function saveNote() {
+            const note = document.getElementById('order-note')?.value || '';
+            localStorage.setItem('cocoonOrderNote', note);
+        }
+
+        // Đọc ghi chú đơn hàng
+        function loadNote() {
+            const note = localStorage.getItem('cocoonOrderNote') || '';
+            const noteField = document.getElementById('order-note');
+            if (noteField) noteField.value = note;
+        }
+
+        // Hiển thị giỏ hàng
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const sidebar = document.getElementById('cart-sidebar');
+            
+            if (!container) return;
+            
+            let cart = getCart();
+            
+            // Nếu giỏ hàng trống
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Giỏ hàng của bạn đang trống</h3>
+                        <p>Hãy thêm sản phẩm vào giỏ hàng nhé!</p>
+                        <a href="trangsp1.html" class="shop-link"> MUA SẮM NGAY</a>
+                    </div>
+                `;
+                if (sidebar) sidebar.style.display = 'none';
+                return;
+            }
+            
+            // Có sản phẩm trong giỏ
+            if (sidebar) sidebar.style.display = 'block';
+            
+            let subtotal = 0;
+            
+            container.innerHTML = `
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${cart.map(item => {
+                            subtotal += item.price * (item.quantity || 1);
+                            return `
+                                <tr data-id="${item.id}">
+                                    <td>
+                                        <div class="product-info">
+                                            <img src="${item.image}" onerror="this.src='https://via.placeholder.com/80'">
+                                            <div class="product-details">
+                                                <h4>${item.name}</h4>
+                                                ${item.variant ? `<p>${item.variant}</p>` : ''}
+                                                <button class="remove-item" data-id="${item.id}">
+                                                    <i class="fas fa-trash-alt"></i> Xóa
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="product-price">${item.price.toLocaleString()}₫</td>
+                                    <td>
+                                        <div class="quantity-control">
+                                            <button class="qty-minus" data-id="${item.id}">-</button>
+                                            <span>${item.quantity || 1}</span>
+                                            <button class="qty-plus" data-id="${item.id}">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">${(item.price * (item.quantity || 1)).toLocaleString()}₫</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            // Cập nhật tổng tiền
+            const totalElement = document.getElementById('total-amount');
+            if (totalElement) {
+                totalElement.innerText = `${subtotal.toLocaleString()}₫`;
+            }
+            
+            // Gắn sự kiện cho các nút
+            document.querySelectorAll('.qty-minus').forEach(btn => {
+                btn.addEventListener('click', () => updateQuantity(parseInt(btn.dataset.id), -1));
+            });
+            document.querySelectorAll('.qty-plus').forEach(btn => {
+                btn.addEventListener('click', () => updateQuantity(parseInt(btn.dataset.id), 1));
+            });
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => removeFromCart(parseInt(btn.dataset.id)));
+            });
+        }
+
+        // Thanh toán
+        document.getElementById('checkout-btn')?.addEventListener('click', () => {
+            if (getCart().length > 0) {
+                saveNote();
+                window.location.href = 'checkout.html';
+            } else {
+                alert('Giỏ hàng trống! Hãy thêm sản phẩm trước khi thanh toán.');
+            }
+        });
+
+        document.addEventListener('input', (e) => {
+            if (e.target.id === 'order-note') {
+                saveNote();
+            }
+        });
+
+        renderCart();
+        loadNote();
+        updateCartCount();
+    </script>
+</body>
+</html>

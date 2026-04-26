@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - Cocoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1a1a; }
+    .result-main { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .result-card { max-width: 500px; width: 100%; text-align: center; padding: 2.5rem; border: 1px solid #eaeaea; background: white; }
+    .result-card.success i { font-size: 3rem; color: #2e7d32; margin-bottom: 1rem; }
+    .result-card h2 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .order-id { font-size: 0.8rem; color: #888; margin-bottom: 2rem; }
+    .order-details { text-align: left; background: #fafafa; padding: 1rem; margin: 1.5rem 0; }
+    .order-details h4 { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.8rem; }
+    .info-row { font-size: 0.75rem; margin-bottom: 0.3rem; color: #555; }
+    .payment-method { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #ddd; font-size: 0.75rem; }
+    .btn-home { display: inline-block; background: #1a1a1a; color: white; text-decoration: none; padding: 0.8rem 2rem; font-size: 0.8rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <main class="result-main"><div class="result-card" id="result-card"></div></main>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    const method = urlParams.get('method');
+    const orderId = urlParams.get('orderId') || 'COC' + Date.now();
+    const container = document.getElementById('result-card');
+    if (status === 'success') {
+      container.className = 'result-card success';
+      container.innerHTML = `<i class="fas fa-check-circle"></i><h2>Đặt hàng thành công</h2><div class="order-id">Mã đơn hàng #${orderId}</div><p>Cảm ơn bạn đã mua hàng!</p><div class="order-details"><h4>Thông tin đơn hàng</h4><div class="info-row"><strong>Thông tin giao hàng</strong></div><div class="info-row" id="customer-name"></div><div class="info-row" id="customer-phone"></div><div class="info-row" id="customer-address"></div><div class="payment-method">Phương thức thanh toán: ${method === 'cod' ? 'Thanh toán khi nhận hàng (COD)' : 'Chuyển khoản qua ngân hàng (QR)'}</div></div><a href="index.html" class="btn-home">Tiếp tục mua sắm</a>`;
+    } else {
+      container.innerHTML = `<i class="fas fa-times-circle" style="color:#d32f2f; font-size:3rem;"></i><h2>Đặt hàng thất bại</h2><p>Đã có lỗi xảy ra. Vui lòng thử lại.</p><a href="cart.html" class="btn-home">Quay lại giỏ hàng</a>`;
+    }
+  </script>
+</body>
+</html>

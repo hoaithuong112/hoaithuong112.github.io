@@ -23,7 +23,7 @@
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-search"></i></a>
                 <a href="#"><i class="fas fa-user"></i></a>
-                <a href="#" class="cart-icon">
+                <a href="giohangfull.html" class="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>
@@ -48,10 +48,15 @@
         <div class="wrapper">
             <!-- Main Content -->
             <main class="main-content">
-         <div class="section-header">
+<div class="section-header">
                <h2 class="main-title">TẤT CẢ SẢN PHẨM</h2>
                   <div class="divider"></div>
                    <p class="sub-title">100% Thuần Chay - Tự hào mỹ phẩm Việt</p>
+        </div>
+        <div class="search-toolbar">
+            <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm (vd: gi, gel rửa mặt...)" id="search-input">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <button class="clear-search" style="display: none;"><i class="fas fa-times"></i></button>
         </div>
                 <!-- Products Grid -->
                 <div class="products-grid">
@@ -226,7 +231,7 @@
                 <!-- Pagination -->
                 <div class="pagination">
                     <a href="trangsp1.html" class="page-link">1</a>
-                    <a href="transp2.html" class="page-link active">2</a>
+                    <a href="trangsp2.html" class="page-link active">2</a>
                 </div>
             </main>
         </div>
@@ -267,21 +272,85 @@
     </footer>
  <script>
         const searchInput = document.querySelector('.search-input');
+        const clearBtn = document.querySelector('.clear-search');
         const productCards = document.querySelectorAll('.product-card');
-
 
         function filterProducts() {
             const query = searchInput.value.trim().toLowerCase();
             productCards.forEach(card => {
                 const title = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
-                const brand = card.querySelector('.product-brand')?.textContent.toLowerCase() || '';
-                const matches = query === '' || title.includes(query) || brand.includes(query);
+                const matches = query === '' || title.startsWith(query) || title.includes(query);
                 card.style.display = matches ? 'block' : 'none';
             });
+            if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
         }
 
+        function clearSearch() {
+            searchInput.value = '';
+            filterProducts();
+            searchInput.focus();
+        }
 
-        searchInput.addEventListener('input', filterProducts);
+        if (searchInput) {
+            searchInput.addEventListener('input', filterProducts);
+            if (clearBtn) clearBtn.addEventListener('click', clearSearch);
+        }
+
+    function getCart() {
+        return JSON.parse(localStorage.getItem('cocoonCart')) || [];
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem('cocoonCart', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        let cart = getCart();
+        let total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        const countEl = document.querySelector('.cart-count');
+        if (countEl) countEl.innerText = total;
+    }
+
+    // Thêm sản phẩm vào giỏ
+    function addToCart(product) {
+        let cart = getCart();
+        let existing = cart.find(item => item.id === product.id);
+        
+        if (existing) {
+            existing.quantity = (existing.quantity || 1) + 1;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1
+            });
+        }
+        
+        saveCart(cart);
+    
+    }
+
+    // Gắn sự kiện cho tất cả nút "Thêm vào giỏ hàng"
+    document.querySelectorAll('.add-to-cart').forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            const card = this.closest('.product-card');
+            const name = card.querySelector('.product-name')?.innerText || 'Sản phẩm';
+            const priceText = card.querySelector('.product-price')?.innerText || '0';
+            const price = parseInt(priceText.replace(/[^0-9]/g, ''));
+            const img = card.querySelector('.product-image img')?.src || '';
+            
+            addToCart({
+                id: Date.now() + index,  // Tạo id tạm thời
+                name: name,
+                price: price,
+                image: img
+            });
+        });
+    });
+    updateCartCount();
     </script>
 </body>
 </html>

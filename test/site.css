@@ -533,7 +533,6 @@ background-image: url(ảnh_nền_cocoon.jpg);
             transform: scale(1.02);
         }
 
-        /* ========== HAI ẢNH ========== */
         .all-img {
             display: flex;
             flex-wrap: wrap;
@@ -566,8 +565,6 @@ background-image: url(ảnh_nền_cocoon.jpg);
             margin: 1rem 0;
             color: #3e2a21;
         }
-
-        /* ========== FOOTER ========== */
         .end-all {
             background: #1e1915;
             color: #e7dfd3;
@@ -682,7 +679,102 @@ background-image: url(ảnh_nền_cocoon.jpg);
             margin-top: 2rem;
             font-size: 0.75rem;
         }
+   .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; z-index: 9999; justify-content: center; align-items: center; }
+       
+        .card {
+            background: #fdf8f1; 
+            padding: 40px 30px;
+            border-radius: 35px; 
+            width: 400px;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
+
+        .close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #8d6e63; }
+       
+        .card h2 {
+            color: #4d3126;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+
+        .card input {
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e8d8c3;
+            border-radius: 15px; /* Bo tròn ô input */
+            box-sizing: border-box;
+            background: #fff;
+            font-size: 15px;
+            outline: none;
+            color: #4d3126;
+        }
+
+
+        .card input::placeholder { color: #a89085; }
+
+
+        .password-box { position: relative; }
+       
+        .toggle {
+            position: absolute;
+            right: 15px;
+            top: 16px;
+            cursor: pointer;
+            font-size: 18px;
+            filter: grayscale(1) opacity(0.6);
+        }
+
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            margin-bottom: 25px;
+            color: #4d3126;
+            align-items: center;
+        }
+
+
+        .options label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .options input[type="checkbox"] { width: auto; margin: 0; }
+        .options span { color: #bc8a6f; font-weight: 500; }
+
+
+        .card button {
+            width: 100%;
+            padding: 15px;
+            background: #cb8b6d; 
+            color: #fff;
+            border: none;
+            border-radius: 30px; 
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+
+        .card button:hover { background: #b07458; }
+
+
+        .switch {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 15px;
+            color: #8d6e63;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+
+        .hidden { display: none; }
         /* ========== RESPONSIVE ========== */
         @media (max-width: 900px) {
             .nav-menu, .nav-icons { display: none; }
@@ -692,3 +784,18 @@ background-image: url(ảnh_nền_cocoon.jpg);
             .col-policy { text-align: center; }
             .slide-content h2 { font-size: 2.2rem; }
         }
+        /* Mobile: dưới 768px */
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: 1fr !important;
+  }
+  .slide-content h2 {
+    font-size: 1.8rem;
+  }
+  .main-container {
+    padding: 2rem 1rem;
+  }
+  .content-box {
+    padding: 20px;
+  }
+}

@@ -256,8 +256,198 @@ header {
 
 .sub-title {
   font-size: 14px;
-  font-style: italic; /* In nghiêng */
+  font-style: italic;
   color: #666;
+}
+
+.search-toolbar {
+  max-width: 700px;
+  margin: 30px auto;
+  display: flex;
+  gap: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(252,249,242,0.9) 100%);
+  border-radius: 30px;
+  padding: 6px;
+  box-shadow: 0 8px 32px rgba(194,138,78,0.2), 0 2px 8px rgba(0,0,0,0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(194,138,78,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.search-toolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 30px;
+  padding: 2px;
+  background: linear-gradient(45deg, #c28a4e, #b46f30, #c28a4e);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-toolbar:hover::before,
+.search-toolbar:focus-within::before {
+  opacity: 1;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 16px 24px;
+  font-size: 16px;
+  outline: none;
+  color: #2c2418;
+  font-weight: 500;
+}
+
+.search-input::placeholder {
+  color: #8c735a;
+  font-weight: 400;
+}
+
+.search-btn, .clear-search {
+  width: 52px;
+  height: 52px;
+  border: none;
+  background: linear-gradient(135deg, #c28a4e, #b46f30);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  margin: 0 4px;
+  box-shadow: 0 4px 12px rgba(194,138,78,0.3);
+}
+
+.search-btn:hover, .clear-search:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(194,138,78,0.4);
+}
+
+.search-btn:active, .clear-search:active {
+  transform: scale(0.95);
+}
+
+.search-toolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 30px;
+  padding: 2px;
+  background: linear-gradient(45deg, #c28a4e, #b46f30, #c28a4e);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-toolbar:hover::before,
+.search-toolbar:focus-within::before {
+  opacity: 1;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 16px 24px;
+  font-size: 16px;
+  outline: none;
+  color: #2c2418;
+  font-weight: 500;
+}
+
+.search-input::placeholder {
+  color: #8c735a;
+  font-weight: 400;
+}
+
+.search-btn, .clear-search {
+  width: 52px;
+  height: 52px;
+  border: none;
+  background: linear-gradient(135deg, #c28a4e, #b46f30);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  margin: 0 4px;
+  box-shadow: 0 4px 12px rgba(194,138,78,0.3);
+}
+
+.search-btn:hover, .clear-search:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(194,138,78,0.4);
+}
+
+.search-btn:active, .clear-search:active {
+  transform: scale(0.95);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  outline: none;
+  color: #2c2418;
+}
+
+.search-input::placeholder {
+  color: #8c735a;
+}
+
+.search-btn, .clear-search {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: #c28a4e;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.search-btn:hover, .clear-search:hover {
+  background: #b46f30;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .search-toolbar {
+    margin: 15px;
+    flex-direction: column;
+    border-radius: 16px;
+  }
+  .search-input {
+    border-radius: 12px;
+    background: white;
+    margin-bottom: 10px;
+  }
 }
 
 

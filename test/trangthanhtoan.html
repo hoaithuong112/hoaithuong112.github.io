@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Cocoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1a1a; }
+    .checkout-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid #eaeaea; }
+    .logo { font-size: 1.3rem; font-weight: 700; letter-spacing: 2px; }
+    .back-link { color: #1a1a1a; text-decoration: none; font-size: 0.8rem; }
+    .checkout-main { padding: 2rem 5%; max-width: 1200px; margin: 0 auto; }
+    .checkout-grid { display: flex; flex-wrap: wrap; gap: 3rem; }
+    .checkout-left { flex: 1.5; }
+    .checkout-right { flex: 1; }
+    .express-section { text-align: center; margin-bottom: 2rem; }
+    .express-buttons { display: flex; gap: 1rem; margin: 1rem 0; }
+    .paypal-btn, .gpay-btn { flex: 1; padding: 0.8rem; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 0.8rem; }
+    .divider { text-align: center; margin: 1rem 0; font-size: 0.7rem; color: #aaa; }
+    .form-section { margin-bottom: 2rem; }
+    .form-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group input { width: 100%; padding: 0.8rem; border: 1px solid #ddd; font-family: inherit; font-size: 0.85rem; }
+    .form-row { display: flex; gap: 1rem; }
+    .form-group.half { flex: 1; }
+    .payment-options { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .payment-option { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.85rem; }
+    .discount-section { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
+    .discount-section input { flex: 1; padding: 0.8rem; border: 1px solid #ddd; }
+    .discount-section button { padding: 0 1.5rem; background: #1a1a1a; color: white; border: none; cursor: pointer; }
+    .order-card { background: #fafafa; padding: 1.5rem; position: sticky; top: 20px; }
+    .order-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
+    .order-items { margin-bottom: 1rem; max-height: 250px; overflow-y: auto; }
+    .order-item { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.8rem; }
+    .summary-line { display: flex; justify-content: space-between; font-size: 0.85rem; margin: 0.8rem 0; }
+    .summary-line.total { font-weight: 700; font-size: 1rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+    .tax-note { font-size: 0.7rem; color: #888; margin: 0.5rem 0; }
+    .place-order-btn { width: 100%; background: #1a1a1a; color: white; border: none; padding: 0.8rem; font-size: 0.8rem; cursor: pointer; margin-top: 1rem; }
+    .qr-modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000; }
+    .qr-modal-content { background:white; padding:2rem; text-align:center; max-width:350px; width:90%; }
+    .qr-code { margin:1rem 0; }
+    .qr-code img { max-width:200px; }
+    @media (max-width: 768px) { .checkout-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <header class="checkout-header"><div class="logo">COCOON</div><a href="cart.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a></header>
+  <main class="checkout-main">
+    <div class="checkout-grid">
+      <div class="checkout-left">
+        <div class="express-section"><h3>Express checkout</h3><div class="express-buttons"><button class="paypal-btn"><i class="fab fa-paypal"></i> PayPal</button><button class="gpay-btn"><i class="fab fa-google"></i> G Pay</button></div><div class="divider">OR</div></div>
+        <form id="checkout-form">
+          <div class="form-section"><h3>Contact</h3><div class="form-group"><input type="email" id="email" placeholder="Email or mobile phone number" required></div></div>
+          <div class="form-section"><h3>Delivery</h3><div class="form-row"><div class="form-group half"><input type="text" id="firstname" placeholder="First name" required></div><div class="form-group half"><input type="text" id="lastname" placeholder="Last name" required></div></div><div class="form-group"><input type="text" id="address" placeholder="Address" required></div><div class="form-row"><div class="form-group half"><input type="text" id="city" placeholder="City" required></div><div class="form-group half"><input type="text" id="phone" placeholder="Phone" required></div></div></div>
+          <div class="form-section"><h3>Payment method</h3><div class="payment-options"><label class="payment-option"><input type="radio" name="payment" value="cod" checked><span>Cash on delivery (COD)</span></label><label class="payment-option"><input type="radio" name="payment" value="qr"><span>Bank transfer (QR code)</span></label></div></div>
+          <div class="discount-section"><input type="text" placeholder="Discount code" id="discount-code"><button type="button" id="apply-discount">Apply</button></div>
+        </form>
+      </div>
+      <div class="checkout-right">
+        <div class="order-card"><h3>Your order</h3><div id="order-items" class="order-items"></div><div class="summary-line"><span>Subtotal</span><span id="checkout-subtotal">0₫</span></div><div class="summary-line"><span>Shipping</span><span id="checkout-shipping">30,000₫</span></div><div class="summary-line total"><span>Total</span><span id="checkout-total">0₫</span></div><p class="tax-note">Including taxes</p><button id="place-order-btn" class="place-order-btn">Place order</button></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="qrModal" class="qr-modal"><div class="qr-modal-content"><h3>Scan QR code to pay</h3><p id="qr-amount" style="font-size:1.2rem; font-weight:bold; color:#b46f30;"></p><div class="qr-code"><img id="qr-image" src=""></div><p>Order ID: <strong id="qr-orderid"></strong></p><button id="qr-confirm" style="background:#1a1a1a; color:white; border:none; padding:0.5rem 1rem; margin-top:1rem; cursor:pointer;">Paid</button><button id="qr-cancel" style="margin-top:0.5rem; background:none; border:none; cursor:pointer;">Cancel</button></div></div>
+
+  <script>
+    function getCart() { return JSON.parse(localStorage.getItem('cocoonCart')) || []; }
+    function updateCartCount() { let cart = getCart(); let total = cart.reduce((s,i)=>s+i.quantity,0); document.querySelectorAll('#cart-count').forEach(el=>el.innerText=total); }
+    function renderCheckout() {
+      let cart = getCart();
+      let subtotal = 0;
+      const orderContainer = document.getElementById('order-items');
+      if (!orderContainer) return;
+      if (cart.length === 0) { orderContainer.innerHTML = '<p>Cart is empty</p>'; document.getElementById('checkout-subtotal').innerHTML = '0₫'; document.getElementById('checkout-total').innerHTML = '0₫'; return; }
+      orderContainer.innerHTML = cart.map(item => { subtotal += item.price * item.quantity; return `<div class="order-item"><span>${item.name} x${item.quantity}</span><span>${(item.price * item.quantity).toLocaleString()}₫</span></div>`; }).join('');
+      document.getElementById('checkout-subtotal').innerHTML = `${subtotal.toLocaleString()}₫`;
+      document.getElementById('checkout-total').innerHTML = `${(subtotal + 30000).toLocaleString()}₫`;
+    }
+    renderCheckout();
+    updateCartCount();
+
+    // QR Modal
+    const modal = document.getElementById('qrModal');
+    function showQR(amount, orderId) {
+      document.getElementById('qr-amount').innerText = `${amount.toLocaleString()}₫`;
+      document.getElementById('qr-orderid').innerText = orderId;
+      document.getElementById('qr-image').src = `https://img.vietqr.io/image/970415-1234567890-compact2.png?amount=${amount}&addInfo=${orderId}`;
+      modal.style.display = 'flex';
+    }
+    document.getElementById('qr-confirm')?.addEventListener('click', () => {
+      modal.style.display = 'none';
+      localStorage.removeItem('cocoonCart');
+      window.location.href = 'result.html?status=success&method=qr&orderId=' + document.getElementById('qr-orderid').innerText;
+    });
+    document.getElementById('qr-cancel')?.addEventListener('click', () => modal.style.display = 'none');
+
+    // Place order
+    document.getElementById('place-order-btn')?.addEventListener('click', () => {
+      const email = document.getElementById('email')?.value.trim();
+      const firstname = document.getElementById('firstname')?.value.trim();
+      const lastname = document.getElementById('lastname')?.value.trim();
+      const address = document.getElementById('address')?.value.trim();
+      const phone = document.getElementById('phone')?.value.trim();
+      const payment = document.querySelector('input[name="payment"]:checked')?.value;
+      if (!email || !firstname || !lastname || !address || !phone) { alert('Please fill all fields'); return; }
+      if (getCart().length === 0) { alert('Cart is empty'); return; }
+      const total = parseInt(document.getElementById('checkout-total').innerText.replace(/[^0-9]/g,'')) || 0;
+      const orderId = 'COC' + Date.now();
+      if (payment === 'qr') showQR(total, orderId);
+      else { localStorage.removeItem('cocoonCart'); window.location.href = `result.html?status=success&method=cod&orderId=${orderId}`; }
+    });
+  </script>
+</body>
+</html>
